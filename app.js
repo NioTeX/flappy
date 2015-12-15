@@ -1,8 +1,8 @@
 $(function() {
-	var shouldRun = false;
 	var n;
 	var clicked = false;
 	var currentWeb = 'manual';
+	var genomes;
 	$("#run").change(function() {
 		if(this.checked) {
 			shouldRun = true;
@@ -18,7 +18,7 @@ $(function() {
 	function timeoutFunc() {
 		setTimeout(function() {
 			start();
-			if(shouldRun && flappy.Alive) {
+			if(flappy.Alive) {
 				timeoutFunc();
 			}
 		}, $('#refreshRate').val());
@@ -48,7 +48,5 @@ $(function() {
 		console.log(genome[0]);
 		n = new Network(genome[0]);
 		console.log(n);
-		$('#run').prop('checked', true);
-		$('#run').change();
 	});
 });
