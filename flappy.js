@@ -15,6 +15,18 @@ flappy = {
 		topX: 3,
 		bottomX: 6
 	},
+	Reset: function(){
+		this.obs.Y = 12
+		this.obs.topX = 3
+		this.obs.bottomX = 6
+		this.bird =  {
+			posX: 4,
+			posY: 2,
+			velocity: 1
+		};
+		this.Alive = true;
+		this.Fitness = 0;
+	},
 	Export: function() {
 		var out = [];
 		for(var x = 0; x < this.screen.x; x++) {

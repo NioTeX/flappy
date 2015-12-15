@@ -32,12 +32,17 @@
 					<table class="table table-striped">
 						<tr>
 							<th>ID</th>
+							<th>Nodes</th>
+							<th>Connections</th>
 							<th>Fitness</th>
 							<th></th>
 						</tr>
 						<tr ng-repeat="(key, value) in search.result">
 							<td>{{value.ID}}</td>
+							<td>{{value.Nodes.length}}</td>
+							<td>{{value.Conns.length}}</td>
 							<td>{{value.Fitness}}</td>
+							<td><a href="javascript:;" ng-click="search.selectGenome(value)">SELECT</a></td>
 						</tr>
 					</table>
 				</div>
@@ -48,6 +53,7 @@
 					</select>
 					<input type="text" id="refreshRate" name="refreshRate" value="500">
 					<button class="btn btn-lg btn-success" id="start">Start</button>
+					<button ng-click="search.resetGame()" class="btn btn-lg btn-success">RESET</button>
 					<span id="fitness">0</span>
 				</div>
 

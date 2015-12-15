@@ -1,6 +1,4 @@
 $(function() {
-	var n;
-	var genomes;
 	var clicked = false;
 	var currentWeb = 'manual';
 	$("#start").click(function() {
@@ -64,4 +62,13 @@ angular.module('flappy', [])
 	search.search = function() {
 		search.result = paymentsByTotal.filter([search.minFitness,search.maxFitness]).top(5);
 	};
+
+	search.selectGenome = function(g){
+		n = new Network(g);
+	}
+
+	search.resetGame = function(){
+		flappy.Reset();
+	};
+
   });
