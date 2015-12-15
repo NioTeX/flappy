@@ -27,9 +27,28 @@ $(function() {
 	$.getJSON("genomes/0starter.json", function(json) {
 		genomes = crossfilter(json);
 		paymentsByTotal = genomes.dimension(function(d) { return d.Fitness; });
-		genome = paymentsByTotal.filter([7,22]).bottom(1)
-		console.log(genome[0]);
-		n = new Network(genome[0]);
-		console.log(n);
+
+		$('#search').click(function() {
+			var minFitness = $('#minFitness').val();
+			var maxFitness = $('#maxFitness').val();
+			genomes = paymentsByTotal.filter([minFitness,maxFitness]).bottom(1)
+			console.log(genomes);
+			n = new Network(genomes[0]);
+		});
 	});
+
+
+
 });
+
+angular.module('flappy', [])
+  .controller('SearchController', function() {
+    var search = this;
+	search.result = [];
+	search.minFitness = 0;
+	search.maxFitness = 3;
+
+	search.search = function() {
+		search.result = paymentsByTotal.filter([search.minFitness,search.maxFitness]).top(5);
+	};
+  });

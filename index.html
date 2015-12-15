@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="flappy">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,20 +13,33 @@
 				<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
 				</canvas>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8" ng-controller="SearchController as search">
 				<div class="control-group row">
 					<label class="control-label col-sm-2" for="inputType">Fitness</label>
 					<div class="controls col-sm-5">
-						<input type="text" id="minFitness" placeholder="Min">
+						<input type="text" ng-model="search.minFitness" placeholder="Min">
 					</div>
 					<div class="controls col-sm-5">
-						<input type="text" id="maxFitness" placeholder="Max">
+						<input type="text" ng-model="search.maxFitness" placeholder="Max">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-11">
-						<button type="button" name="search" id="search" class="btn btn-lg pull-right">Search</button>
+						<button type="button" name="search" ng-click="search.search()" class="btn btn-lg pull-right">Search</button>
 					</div>
+				</div>
+				<div class="row">
+					<table class="table table-striped">
+						<tr>
+							<th>ID</th>
+							<th>Fitness</th>
+							<th></th>
+						</tr>
+						<tr ng-repeat="(key, value) in search.result">
+							<td>{{value.ID}}</td>
+							<td>{{value.Fitness}}</td>
+						</tr>
+					</table>
 				</div>
 				<div class="control-group row">
 					<select id="genome" class="" name="genome">
@@ -44,6 +57,7 @@
 		</div>
 
 		<script src="assets/js/vendor/jquery-2.1.4.min.js" charset="utf-8" type="text/javascript"></script>
+		<script src="assets/js/vendor/angular.min.js" charset="utf-8" type="text/javascript"></script>
 		<script src="assets/js/vendor/bootstrap.min.js" charset="utf-8" type="text/javascript"></script>
 		<script src="assets/js/vendor/crossfilter.min.js" charset="utf-8" type="text/javascript"></script>
 		<script src="calc.js" charset="utf-8" type="text/javascript"></script>
