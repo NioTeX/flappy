@@ -2,6 +2,7 @@ $(function() {
 	var shouldRun = false;
 	var n;
 	var clicked = false;
+	var currentWeb = 'MANUAL';
 	$("#run").change(function() {
 		if(this.checked) {
 			shouldRun = true;
@@ -28,7 +29,8 @@ $(function() {
 		$('#velocity').text(flappy.bird.velocity);
 		visualise(10,10,40,inputs);
 		$('#fitness').text(flappy.Fitness);
-		if(true){
+		currentWeb = $("genome").val();
+		if(currentWeb == 'MANUAL'){
 			flappy.Next(clicked);
 			clicked = false;
 		}else{
