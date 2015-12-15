@@ -1,11 +1,16 @@
 $(function() {
 	var shouldRun = false;
 	var n;
+	var clicked = false;
 	$("#run").change(function() {
 		if(this.checked) {
 			shouldRun = true;
 			timeoutFunc();
 		}
+	});
+
+	$('body').click(function(){
+		clicked = true;
 	});
 
 
@@ -23,8 +28,13 @@ $(function() {
 		$('#velocity').text(flappy.bird.velocity);
 		visualise(10,10,40,inputs);
 		$('#fitness').text(flappy.Fitness);
-		out = n.response(inputs);
-		flappy.Next(out);
+		if(true){
+			flappy.Next(clicked);
+			clicked = false;
+		}else{
+			out = n.response(inputs);
+			flappy.Next(out);
+		}
 	}
 
 	$.getJSON("genomes/0starter.json", function(json) {
