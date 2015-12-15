@@ -14,25 +14,31 @@
 				</canvas>
 			</div>
 			<div class="col-md-8">
-				<form class="form-horizontal">
-					<div class="control-group row">
-						<label class="control-label col-sm-2" for="inputType">Fitness</label>
-						<div class="controls col-sm-5">
-							<input type="text" id="minFitness" placeholder="Min">
-						</div>
-						<div class="controls col-sm-5">
-							<input type="text" id="maxFitness" placeholder="Max">
-						</div>
+				<div class="control-group row">
+					<label class="control-label col-sm-2" for="inputType">Fitness</label>
+					<div class="controls col-sm-5">
+						<input type="text" id="minFitness" placeholder="Min">
 					</div>
-				</form>
-				<button type="button" name="search" id="search" class="btn btn-lg">Search</button>
-				<select id="genome" class="" name="genome">
-					<option value="manual" selected>Manual</option>
-					<option value="neuoroShit">AI</option>
-				</select>
-				<input type="text" id="refreshRate" name="refreshRate" value="500">
-				<button class="btn btn-lg btn-success" id="start">Start</button>
-				<span id="fitness">0</span>
+					<div class="controls col-sm-5">
+						<input type="text" id="maxFitness" placeholder="Max">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-11">
+						<button type="button" name="search" id="search" class="btn btn-lg pull-right">Search</button>
+					</div>
+				</div>
+				<div class="control-group row">
+					<select id="genome" class="" name="genome">
+						<option value="manual" selected>Manual</option>
+						<option value="neuoroShit">AI</option>
+					</select>
+					<input type="text" id="refreshRate" name="refreshRate" value="500">
+					<button class="btn btn-lg btn-success" id="start">Start</button>
+					<span id="fitness">0</span>
+				</div>
+
+
 			</div>
 
 		</div>
