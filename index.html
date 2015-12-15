@@ -9,29 +9,29 @@
 	</head>
 	<body>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
 				</canvas>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<form class="form-horizontal">
-					<div class="control-group">
-						<label class="control-label col-sm-4" for="inputType">Fitness</label>
-						<div class="controls col-sm-8">
+					<div class="control-group row">
+						<label class="control-label col-sm-2" for="inputType">Fitness</label>
+						<div class="controls col-sm-5">
 							<input type="text" id="minFitness" placeholder="Min">
+						</div>
+						<div class="controls col-sm-5">
 							<input type="text" id="maxFitness" placeholder="Max">
 						</div>
 					</div>
 				</form>
-				<input type="text" id="minFitness" value="0">
-				<input type="text" id="maxFitness" value="20">
-				<button type="button" name="button"></button>
+				<button type="button" name="search" id="search" class="btn btn-lg">Search</button>
 				<select id="genome" class="" name="genome">
 					<option value="manual" selected>Manual</option>
 					<option value="neuoroShit">AI</option>
 				</select>
 				<input type="text" id="refreshRate" name="refreshRate" value="500">
-				<input type="checkbox" id="run">
+				<button class="btn btn-lg btn-success" id="start">Start</button>
 				<span id="fitness">0</span>
 			</div>
 

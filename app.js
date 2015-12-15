@@ -1,24 +1,15 @@
 $(function() {
-	var shouldRun = false;
 	var n;
-	var clicked = false;
-	var currentWeb = 'MANUAL';
-	$("#run").change(function() {
-		if(this.checked) {
-			shouldRun = true;
-			timeoutFunc();
-		}
-	});
-
-	$('body').click(function(){
-		clicked = true;
+	var genomes;
+	$("#start").click(function() {
+		timeoutFunc();
 	});
 
 
 	function timeoutFunc() {
 		setTimeout(function() {
 			start();
-			if(shouldRun && flappy.Alive) {
+			if(flappy.Alive) {
 				timeoutFunc();
 			}
 		}, $('#refreshRate').val());
@@ -29,14 +20,8 @@ $(function() {
 		$('#velocity').text(flappy.bird.velocity);
 		visualise(10,10,40,inputs);
 		$('#fitness').text(flappy.Fitness);
-		currentWeb = $("genome").val();
-		if(currentWeb == 'MANUAL'){
-			flappy.Next(clicked);
-			clicked = false;
-		}else{
-			out = n.response(inputs);
-			flappy.Next(out);
-		}
+		out = n.response(inputs);
+		flappy.Next(out);
 	}
 
 	$.getJSON("genomes/0starter.json", function(json) {
@@ -46,7 +31,5 @@ $(function() {
 		console.log(genome[0]);
 		n = new Network(genome[0]);
 		console.log(n);
-		$('#run').prop('checked', true);
-		$('#run').change();
 	});
 });
