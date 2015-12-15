@@ -30,7 +30,7 @@ $(function() {
 	$.getJSON("genomes/0starter.json", function(json) {
 		genomes = crossfilter(json);
 		paymentsByTotal = genomes.dimension(function(d) { return d.Fitness; });
-		genome = paymentsByTotal.filter([1,22]).top(1)
+		genome = paymentsByTotal.filter([7,22]).bottom(1)
 		console.log(genome[0]);
 		n = new Network(genome[0]);
 		console.log(n);
