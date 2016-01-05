@@ -1,6 +1,6 @@
 $(function() {
 	var clicked = false;
-	var currentWeb = 'manual';
+	var currentWeb = 'neuoroShit';
 	$("#start").click(function() {
 		timeoutFunc();
 	});
@@ -18,19 +18,22 @@ $(function() {
 		}, $('#refreshRate').val());
 	}
 
+	visualiser.init(10, 25, 10, 10, 40);
+	visualiser.base();
+
 	var start = function() {
 		var inputs = flappy.Export();
 		$('#velocity').text(flappy.bird.velocity);
-		visualise(10,10,40,inputs);
+		visualiser.base();
+		visualiser.run(inputs);
 		$('#fitness').text(flappy.Fitness);
 		currentWeb = $('#genome option:selected').val();
-
-		console.log("currentWeb", currentWeb);
 		if(currentWeb == 'manual'){
  			flappy.Next(clicked);
  			clicked = false;
  		}else{
 			out = n.response(inputs);
+			visualiser.neuronWeb(n.network);
 			flappy.Next(out);
 		}
 	}

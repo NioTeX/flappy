@@ -76,7 +76,8 @@ Network.prototype.getActivation = function(node){
 		sum += node.activationValues[j];
 	  }
 	  // console.log(node.Innovation, "out");
-	  return this.activationFunctions[node.ActivationType](sum);
+	  node.activationResult = this.activationFunctions[node.ActivationType](sum);
+	  return node.activationResult;
 	}
 
 
