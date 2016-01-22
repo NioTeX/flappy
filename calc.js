@@ -66,7 +66,8 @@ Network.prototype.getActivation = function(node){
 		if(connection.Target == node.Innovation && !connection.used && connection.Enabled == true){
 		  // connection.used = true;
 		  var sourceId = "" + (parseInt(connection.Source)-1);
-		  node.activationValues.push(connection.Weight * this.getActivation(this.getNeuronWithInnovationId(connection.Source)));
+		  connection.result = connection.Weight * this.getActivation(this.getNeuronWithInnovationId(connection.Source));
+		  node.activationValues.push(connection.result);
 		}
 	  }
 
